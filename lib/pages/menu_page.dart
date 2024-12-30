@@ -114,151 +114,165 @@ class _MenuPageState extends State<MenuPage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          // promo banner
-          const SizedBox(height: 25),
-          Container(
-            decoration: BoxDecoration(
-                color: primaryColor, borderRadius: BorderRadius.circular(20)),
-            margin: const EdgeInsets.symmetric(horizontal: 25),
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Get 17% Promo",
-                      style: GoogleFonts.dmSerifDisplay(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // promo banner
+            const SizedBox(height: 25),
+            Container(
+              decoration: BoxDecoration(
+                  color: primaryColor, borderRadius: BorderRadius.circular(20)),
+              margin: const EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Get 17% Promo",
+                        style: GoogleFonts.dmSerifDisplay(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
 
-                    const SizedBox(height: 25),
+                      const SizedBox(height: 25),
 
-                    //redeem button
-                    MyButton(
-                      text: "Redeem Code",
-                      onTap: () {},
-                    ),
-                  ],
-                ),
+                      //redeem button
+                      MyButton(
+                        text: "Redeem Code",
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
 
-                //image
-                Image.asset(
-                  "lib/images/promo.png",
-                  width: 100,
-                  height: 100,
-                ),
-              ],
+                  //image
+                  Image.asset(
+                    "lib/images/promo.png",
+                    width: 100,
+                    height: 100,
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          const SizedBox(height: 25),
+            const SizedBox(height: 25),
 
-          // search bar
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search here...',
-                hintStyle: GoogleFonts.dmSerifDisplay(color: secondaryColor),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+            // search bar
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(20),
+                child: TextField(
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 15),
+                    border: InputBorder.none,
+                    hintText: 'Search here...',
+                    hintStyle: GoogleFonts.dmSerifDisplay(
+                      color: Colors.grey[500],
+                      fontSize: 16,
+                    ),
+                    suffixIcon: Icon(
+                      Icons.search,
+                      color: Colors.grey[500],
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
 
-          const SizedBox(height: 25),
+            const SizedBox(height: 25),
 
-          // menu list
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Text('Food Menu',
-                style: GoogleFonts.dmSerifDisplay(
-                  fontSize: 20,
-                  color: secondaryColor,
-                )),
-          ),
+            // menu list
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Text('Food Menu',
+                  style: GoogleFonts.dmSerifDisplay(
+                    fontSize: 20,
+                    color: secondaryColor,
+                  )),
+            ),
 
-          const SizedBox(height: 25),
+            const SizedBox(height: 25),
 
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: foodMenu.length,
-              itemBuilder: (context, index) => FoodTile(
-                food: foodMenu[index],
-                onTap: () => navigateToFoodDetails(index),
+            SizedBox(
+              height: 250,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: foodMenu.length,
+                itemBuilder: (context, index) => SizedBox(
+                  width: 200,
+                  child: FoodTile(
+                    food: foodMenu[index],
+                    onTap: () => navigateToFoodDetails(index),
+                  ),
+                ),
               ),
             ),
-          ),
 
-          const SizedBox(height: 40),
+            const SizedBox(height: 40),
 
-          // popular food
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            margin: const EdgeInsets.only(left: 30, right: 30, bottom: 40),
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              children: [
-                //image
-                Image.asset(
-                  'lib/images/kebab.png',
-                  height: 60,
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                //name and price
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //name
-                    Text(
-                      'Kebab',
-                      style: GoogleFonts.dmSerifDisplay(
-                        fontSize: 20,
+            // popular food
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              margin: const EdgeInsets.only(left: 30, right: 30, bottom: 40),
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                children: [
+                  //image
+                  Image.asset(
+                    'lib/images/kebab.png',
+                    height: 60,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  //name and price
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //name
+                      Text(
+                        'Kebab',
+                        style: GoogleFonts.dmSerifDisplay(
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
 
-                    const SizedBox(height: 10),
+                      const SizedBox(height: 10),
 
-                    //price
-                    Text(
-                      '6.5€',
-                      style: GoogleFonts.dmSerifDisplay(
-                        fontSize: 20,
-                        color: Colors.grey[700],
+                      //price
+                      Text(
+                        '6.5€',
+                        style: GoogleFonts.dmSerifDisplay(
+                          fontSize: 20,
+                          color: Colors.grey[700],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
 
-                //heart icon
-                Padding(
-                  padding: const EdgeInsets.only(left: 135),
-                  child: Icon(Icons.favorite_outline,
-                      color: secondaryColor, size: 30),
-                ),
-              ],
+                  //heart icon
+                  Padding(
+                    padding: const EdgeInsets.only(left: 135),
+                    child: Icon(Icons.favorite_outline,
+                        color: secondaryColor, size: 30),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
